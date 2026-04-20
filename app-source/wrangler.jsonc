@@ -13,7 +13,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "ai-story"
+      "service": "ai-storyforge-studio"
     }
   ],
   "images": {
