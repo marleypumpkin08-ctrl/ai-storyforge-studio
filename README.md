@@ -1,17 +1,22 @@
 # GitHub -> Cloudflare Upload Folder
 
-This folder is ready to push to GitHub and connect to Cloudflare Workers.
+This folder now contains two paths:
 
-## Files
-- `worker.js` - worker entrypoint
-- `wrangler.toml` - worker config
+## 1) Quick Worker upload
+- `worker.js`
+- `wrangler.toml`
+- `assets/`
 
-## Quick steps
-1. Upload this folder contents to a GitHub repo.
-2. In Cloudflare dashboard, create/import a Worker from GitHub.
-3. Set root directory to this folder if your repo includes other files.
-4. Deploy.
+Use this when you want no-build dashboard upload.
 
-## Verify
-- Open your worker URL.
-- Check health endpoint: `/api/health`
+## 2) Real app source (from your actual folders)
+- `app-source/`
+
+This is copied from your real project structure (`src`, `prisma`, config files), not a made-up layout.
+
+## Deploy the real app-source on Cloudflare
+1. Push this folder to GitHub.
+2. In Cloudflare, connect the repo.
+3. Set **Root Directory** to: `github-cloudflare-upload/app-source`
+4. Build command: `npm run deploy`
+5. Deploy.

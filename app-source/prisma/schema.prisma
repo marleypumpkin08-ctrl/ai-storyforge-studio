@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id            String           @id @default(cuid())
+  title         String
+  summary       String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  chapters      Chapter[]
+  characters    Character[]
+  loreEntries   LoreEntry[]
+  messages      Message[]
+  generated     GeneratedAsset[]
+}
+
+model Chapter {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  chapterNo   Int
+  title       String
+  beatSummary String
+  content     String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Character {
+  id            String   @id @default(cuid())
+  projectId     String
+  project       Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  name          String
+  bio           String
+  eyeColor      String?
+  aliases       String   @default("")
+  verified      Boolean  @default(false)
+  factsJson     String   @default("{}")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model LoreEntry {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  topic       String
+  details     String
+  source      String?
+  createdAt   DateTime @default(now())
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  role        String
+  content     String
+  metadata    String   @default("{}")
+  createdAt   DateTime @default(now())
+}
+
+model GeneratedAsset {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  type        String
+  prompt      String
+  url         String
+  selected    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}

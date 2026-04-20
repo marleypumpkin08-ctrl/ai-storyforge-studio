@@ -1,0 +1,137 @@
+:root {
+  --bg: #121212;
+  --surface: #1c1c1c;
+  --cyan: #2de2e6;
+  --gold: #d4af37;
+  --text: #ececec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), var(--font-montserrat), sans-serif;
+}
+
+h1, h2, h3 {
+  color: var(--gold);
+  margin: 0 0 0.5rem;
+}
+
+.studio-grid {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr 420px;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.left-sidebar, .center-workspace, .right-preview {
+  background: var(--surface);
+  border: 1px solid rgba(45, 226, 230, 0.25);
+  border-radius: 14px;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.panel-card {
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 0.85rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.terminal-shell {
+  border: 1px solid rgba(45, 226, 230, 0.4);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+}
+
+.terminal-log {
+  flex: 1;
+  overflow: auto;
+  padding: 0.8rem;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+}
+
+.line {
+  margin-bottom: 0.45rem;
+}
+
+.line.user span {
+  color: var(--cyan);
+}
+
+.line.assistant span {
+  color: var(--gold);
+}
+
+.terminal-form {
+  border-top: 1px solid rgba(45, 226, 230, 0.4);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+textarea, input, button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(236, 236, 236, 0.2);
+  background: #141414;
+  color: var(--text);
+  padding: 0.55rem 0.7rem;
+}
+
+button, a {
+  cursor: pointer;
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.cover-preview {
+  margin-top: 0.6rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.preview-wrap {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.flip-controls, .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.canvas-shell {
+  height: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.muted {
+  color: #b2b2b2;
+  font-size: 0.85rem;
+}
